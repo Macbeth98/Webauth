@@ -3,14 +3,43 @@
 <head>
   <meta charset=utf-8>
   <script>
-    const auth = async ()=>{
+    const netlify = async ()=>{
       console.log("It is in auth");
       const publicKeyCredentialCreationOptions = {
       challenge: Uint8Array.from(
           "JHBHJbjhbdhbdvsd89hisbkvbsdkbvhjbsdjvbjhsbddhvbsdjbv", c => c.charCodeAt(0)),
       rp: {
           name: "Duo Security",
-          id: "netlify.com",
+          id: "macbeth98.netlify.com",
+      },
+      user: {
+          id: Uint8Array.from(
+              "UZSL85T9AFC", c => c.charCodeAt(0)),
+          name: "lee@webauthn.guide",
+          displayName: "Lee",
+      },
+      pubKeyCredParams: [{alg: -7, type: "public-key"}],
+      authenticatorSelection: {
+          requireResidentKey: false,
+          userVerification: "discouraged",
+      },
+      timeout: 60000,
+      attestation: "none"
+    };
+
+      const credential = await navigator.credentials.create({
+          publicKey: publicKeyCredentialCreationOptions
+      });
+    }
+    
+    const github = async ()=>{
+      console.log("It is in auth");
+      const publicKeyCredentialCreationOptions = {
+      challenge: Uint8Array.from(
+          "JHBHJbjhbdhbdvsd89hisbkvbsdkbvhjbsdjvbjhsbddhvbsdjbv", c => c.charCodeAt(0)),
+      rp: {
+          name: "Duo Security",
+          id: "macbeth98.github.com",
       },
       user: {
           id: Uint8Array.from(
@@ -35,7 +64,8 @@
 </head>
 <body>
 Hello!<br/>
-<button onclick="auth()">Click Me!</button>
+<button onclick="netlify()">Click Me! Netlify</button> <br/>
+  <button onclick="github()">Click Me! Github</button> <br/>
 
 
 </body>
