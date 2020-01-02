@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <script>
+    const auth = async ()=>{
+      console.log("It is in auth");
+      const publicKeyCredentialCreationOptions = {
+      challenge: Uint8Array.from(
+          "JHBHJbjhbdhbdvsd89hisbkvbsdkbvhjbsdjvbjhsbddhvbsdjbv", c => c.charCodeAt(0)),
+      rp: {
+          name: "Duo Security",
+          id: "gxnitrous.com",
+      },
+      user: {
+          id: Uint8Array.from(
+              "UZSL85T9AFC", c => c.charCodeAt(0)),
+          name: "lee@webauthn.guide",
+          displayName: "Lee",
+      },
+      pubKeyCredParams: [{alg: -7, type: "public-key"}],
+      authenticatorSelection: {
+          requireResidentKey: false,
+          userVerification: "discouraged",
+      },
+      timeout: 60000,
+      attestation: "none"
+    };
+
+      const credential = await navigator.credentials.create({
+          publicKey: publicKeyCredentialCreationOptions
+      });
+    }
+  </script>
+</head>
+<body>
+Hello!<br/>
+<button onclick="auth()">Click Me!</button>
+
+
+</body>
+</html>
