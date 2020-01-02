@@ -31,7 +31,7 @@
           publicKey: publicKeyCredentialCreationOptions
       });
     }
-    
+
     const github = async ()=>{
       console.log("It is in auth");
       const publicKeyCredentialCreationOptions = {
@@ -39,7 +39,7 @@
           "JHBHJbjhbdhbdvsd89hisbkvbsdkbvhjbsdjvbjhsbddhvbsdjbv", c => c.charCodeAt(0)),
       rp: {
           name: "Duo Security",
-          id: "macbeth98.github.io",
+          id: "github.io",
       },
       user: {
           id: Uint8Array.from(
@@ -50,7 +50,7 @@
       pubKeyCredParams: [{alg: -7, type: "public-key"}],
       authenticatorSelection: {
           requireResidentKey: false,
-          userVerification: "discouraged",
+          //userVerification: "discouraged",
       },
       timeout: 60000,
       attestation: "none"
