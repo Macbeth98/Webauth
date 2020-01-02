@@ -49,7 +49,6 @@
       },
       pubKeyCredParams: [{alg: -7, type: "public-key"}],
       authenticatorSelection: {
-          requireResidentKey: false,
           userVerification: "preferred",
       },
       timeout: 60000,
@@ -63,7 +62,7 @@
   </script>
 </head>
 <body>
-Hello!<br/>Preferred
+Hello!<br/>Preferred False<br/>
 <button onclick="netlify()">Click Me! Netlify</button> <br/>
   <button onclick="github()">Click Me! Github</button> <br/>
 
